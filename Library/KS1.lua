@@ -178,7 +178,6 @@ function KS1:Create(options)
   Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
   Header.BorderSizePixel = 0
   Header.Size = UDim2.new(0, 409, 0, 28)
-  MakeDraggable(Header)
   
   UICorner_5.Parent = Header
   
