@@ -357,7 +357,7 @@ function KS1:Create(options)
         print("[ "..getgenv().HubName.." ]".." Correct Key")
         Notify.New("["..getgenv().HubName.."]: Correct Key", 5)
         PandaAuth:SaveKey(getgenv().HubName..".txt", KeyBox.Text)
-        Script()
+        loadstring(game:HttpGet(getgenv().Script))()
 	KeyGUI:Destroy()			
       else
         print("[ "..getgenv().HubName.." ]".." Incorrect key..")
