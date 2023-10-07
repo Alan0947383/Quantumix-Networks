@@ -2,7 +2,43 @@
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local PandaAuth = loadstring(game:HttpGet(('https://pandadevelopment.net/service_api/PandaBetaLib.lua')))()
+local UserInputService = game:GetService("UserInputService")
 local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/Panda/main/Notification.lua"))()
+
+function MakeDraggable(gui)
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
 
 -- [[ UI ]] --
 local KS1 = {}
@@ -69,6 +105,8 @@ function KS1:Create(options)
   Frame.BorderSizePixel = 0
   Frame.Position = UDim2.new(0.382183909, 0, 0.355555564, 0)
   Frame.Size = UDim2.new(0, 409, 0, 233)
+  Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+  MakeDraggable(Frame)
   
   Footer.Name = "Footer"
   Footer.Parent = Frame
@@ -140,6 +178,7 @@ function KS1:Create(options)
   Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
   Header.BorderSizePixel = 0
   Header.Size = UDim2.new(0, 409, 0, 28)
+  MakeDraggable(Header)
   
   UICorner_5.Parent = Header
   
@@ -209,7 +248,7 @@ function KS1:Create(options)
   Note.Size = UDim2.new(0, 380, 0, 64)
   Note.Font = Enum.Font.Gotham
   if getgenv().HubName then
-    Note.Text = "Thank you for supporting"..getgenv().HubName..". stay one step ahead of the machines!"
+    Note.Text = "Thank you for supporting "..getgenv().HubName..". stay one step ahead of the machines!"
   else
     Note.Text = "Thank you for supporting UnknownHUB. stay one step ahead of the machines!"
   end
@@ -260,6 +299,9 @@ function KS1:Create(options)
   KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
   KeyBox.TextSize = 14.000
   KeyBox.TextXAlignment = Enum.TextXAlignment.Left
+  KeyBox.ClearTextOnFocus = false
+  KeyBox.ClipsDescendants = true
+  KeyBox.TextTruncate = Enum.TextTruncate.AtEnd
   
   if getgenv().SaveKey and isfile(getgenv().HubName..".txt") then
     KeyBox.Text = readfile(getgenv().HubName..".txt")
