@@ -51,12 +51,12 @@ function KS1:Create(options)
   getgenv().Script = options.Script
   
   -- PandaAUTH:
-  local function Script()
+  function Script()
     local User = {"Zenith","YajeK","QX"}
     local Fake = {"Bladeball","Minecraft","BloxFruit"}
     PandaAuth:LoadScript(User, "Panda", Fake, getgenv().Script)
   end
-  local function RandomString(length)
+  function RandomString(length)
     local randomString = ""
     for i = 1, length do
       local randomNumber = math.random(97, 122)
@@ -357,7 +357,7 @@ function KS1:Create(options)
         print("[ "..getgenv().HubName.." ]".." Correct Key")
         Notify.New("["..getgenv().HubName.."]: Correct Key", 5)
         PandaAuth:SaveKey(getgenv().HubName..".txt", KeyBox.Text)
-        print('Hello')
+        Script()
 	KeyGUI:Destroy()			
       else
         print("[ "..getgenv().HubName.." ]".." Incorrect key..")
