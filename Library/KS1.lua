@@ -313,7 +313,7 @@ function KS1:Create(options)
   
   if getgenv().SaveKey and isfile(getgenv().HubName..".txt") then
     KeyBox.Text = readfile(getgenv().HubName..".txt")
-    Notify.new("["..getgenv().HubName.."]: Loaded Key", 5)
+    Notify.new("["..getgenv().HubName.."]: Saved Key Loaded", 3)
   end
   
   if getgenv().Discord then
@@ -348,13 +348,13 @@ function KS1:Create(options)
   oldstring = RandomString(10)
   function Login()
     pcall(function()
-      print("[ "..getgenv().HubName.." ]".." Checking key..")
-      Notify.New("["..getgenv().HubName.."]: Checking Key", 2)
+      print("[ "..getgenv().HubName.." ]".." Checking Key...")
+      Notify.New("["..getgenv().HubName.."]: Checking Key...", 2)
       if RandomString(10) == oldstring then return Notify.New("Haha kid want to bypass PandaKeySystem v2", 2) end;oldstring = RandomString(10)
       if PandaAuth:GetLink(getgenv().ServiceName) == nil or PandaAuth:ValidateKey(getgenv().ServiceName, KeyBox.Text..RandomString(10)) then
         return Notify.New("Haha kid want to bypass PandaKeySystem v2", 2)
       elseif PandaAuth:ValidateKey(getgenv().ServiceName, KeyBox.Text) then
-        print("[ "..getgenv().HubName.." ]".." Correct key..")
+        print("[ "..getgenv().HubName.." ]".." Correct Key")
         Notify.New("["..getgenv().HubName.."]: Correct Key", 5)
         PandaAuth:SaveKey(getgenv().HubName..".txt", KeyBox.Text)
         print('Hello')
