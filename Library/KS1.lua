@@ -354,6 +354,12 @@ function KS1:Create(options)
       end
     end)
   end
+
+  local SavedKey = isfile(getgenv().HubName..".txt")
+	
+  if getgenv().SaveKey and SavedKey then
+     Login()
+  end
 end
 
 return KS1
