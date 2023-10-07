@@ -258,7 +258,7 @@ function KS1:Create(options)
   if getgenv().HubName then
     Note.Text = "Thank you for supporting "..getgenv().HubName..". stay one step ahead of the machines!"
   else
-    Note.Text = "Thank you for supporting UnknownHUB. stay one step ahead of the machines!"
+    Note.Text = "Thank you for supporting Unknown. stay one step ahead of the machines!"
   end
   Note.TextColor3 = Color3.fromRGB(255, 255, 255)
   Note.TextSize = 13.000
@@ -313,7 +313,7 @@ function KS1:Create(options)
   
   if getgenv().SaveKey and isfile(getgenv().HubName..".txt") then
     KeyBox.Text = readfile(getgenv().HubName..".txt")
-    Notify.new("["..getgenv().HubName.."]: Saved Key Loaded", 3)
+    Notify.New("["..getgenv().HubName.."]: Loaded Saved Key", 5)
   end
   
   if getgenv().Discord then
