@@ -19,7 +19,6 @@ function MakeDraggable(gui)
 			dragging = true
 			dragStart = input.Position
 			startPos = gui.Position
-
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -93,9 +92,19 @@ function KS1:Create(options)
   local Discord = Instance.new("TextLabel")
   local FrameShadow = Instance.new("ImageLabel")
   
-  --Properties:
+  -- Function:
+  function RemoveGui()
+    do
+      local KeySystem = CoreGui:FindFirstChild('KS1')
+      if KeySystem then
+        KeySystem:Destroy()
+      end
+    end
+  end
+  RemoveGui()
   
-  KeyGUI.Name = "KeyGUI"
+  --Properties:
+  KeyGUI.Name = "KS1"
   KeyGUI.Parent = game.CoreGui
   KeyGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   
@@ -335,6 +344,7 @@ function KS1:Create(options)
   FrameShadow.ScaleType = Enum.ScaleType.Slice
   FrameShadow.SliceCenter = Rect.new(85, 85, 427, 427)
   
+  -- Checking Key:
   oldstring = RandomString(10)
   function Login()
     pcall(function()
@@ -346,7 +356,7 @@ function KS1:Create(options)
       elseif PandaAuth:ValidateKey(getgenv().ServiceName, KeyBox.Text) then
         print("[ "..getgenv().HubName.." ]".." Correct key..")
         Notify.New("["..getgenv().HubName.."]: Correct Key", 5)
-        PandaAuth:SaveKey(getgenv().HubName..".txt")
+        PandaAuth:SaveKey(getgenv().HubName..".txt", KeyBox.Text)
         Script()
       else
         print("[ "..getgenv().HubName.." ]".." Incorrect key..")
@@ -354,11 +364,11 @@ function KS1:Create(options)
       end
     end)
   end
-
+  
+  -- Load Saved Key:
   local SavedKey = isfile(getgenv().HubName..".txt")
-	
   if getgenv().SaveKey and SavedKey then
-     Login()
+    Login()
   end
 end
 
