@@ -3,7 +3,7 @@ Documentation for SyncUI Key System, Powered by PandaAuth
 
 ## Booting the library
 ```lua
-local SyncUI = loadstring(game:HttpGet(''))()
+local SyncUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ZenithDust/Quantumix-Networks/main/Library/SyncUI/SyncKS.lua'))()
 ```
 
 ## Creating the UI
