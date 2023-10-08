@@ -22,7 +22,7 @@ HubName = <string> - The name of your script hub
 Discord = <string:optional> - Discord invite code, this is optional
 SaveKey = <boolean> - If you want to save the key so users doesn't have to enter it again
 Script = <string> - Your script link
-]] --
+]]
 ```
 
 > [!NOTE]
