@@ -16,13 +16,12 @@ SyncUI:Create({
   Script = "https://raw.githubusercontent.com/ZenithDust/Quantumix/main/Quantumix.lua"
 })
 
--- [[
+
 ServiceName = <string> - Service Name provided in the PandaAuth Website.
 HubName = <string> - The name of your script hub.
 Discord = <string:optional> - Discord invite code, this is optional.
 SaveKey = <boolean> - If you want to save the key so users dont have to enter it again.
 Script = <string> - Your script link.
-]]
 ```
 
 > [!NOTE]
