@@ -14,7 +14,7 @@ SyncUI:Create({
   Discord = "dsc.gg/example",
   Callback = function()
     print('example')
-  end
+  end,
   SaveKey = true
 })
 ```
