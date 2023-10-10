@@ -3,19 +3,18 @@
 
 ## Booting the library
 ```lua
-local SyncUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ZenithDust/Quantumix-Networks/main/Library/SyncUI/SyncKS.lua'))()
+local SyncUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ZenithDust/Quantumix-Networks/main/Library/SyncUI/SyncV2.lua'))()
 ```
 
 ## Creating the UI
 ```lua
 SyncUI:Create({
-  ServiceName = "quantumix",
-  HubName = "Quantumix Networks",
-  Discord = "Jb4DP46PF8",
-  SaveKey = true,
-  Script = "https://raw.githubusercontent.com/ZenithDust/Quantumix/main/Quantumix.lua"
+  Service = "example",
+  Name = "Example HUB",
+  Discord = "dsc.gg/example",
+  Callback = function()
+    print('example')
+  end
+  SaveKey = true
 })
 ```
-
-> [!NOTE]
-> This Library is on BETA, you might experience some bugs while using it
