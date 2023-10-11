@@ -400,8 +400,6 @@ function SyncUI:Create(Options)
   if SaveKey and isfile(Name..".txt") then
     Object.KeyBox.Text = readfile(Name..".txt")
     Notify.New("["..Name.."]: Loaded Saved Key", 5)
-    wait(5)
-    RemoveUI()
   end
 	
   local SavedKey = isfile(Name .. ".txt")
