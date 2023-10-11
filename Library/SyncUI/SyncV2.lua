@@ -318,12 +318,6 @@ function SyncUI:Create(Options)
       TextXAlignment = Enum.TextXAlignment.Left
     })
   end
-  if SaveKey and isfile(Name..".txt") then
-    Object.KeyBox.Text = readfile(Name..".txt")
-    Notify.New("["..Name.."]: Loaded Saved Key", 5)
-    wait(5)
-    RemoveGui()
-  end
   
   -- [ Corners & Fixers ] --
   Object.MainCorner = SyncInstance:Create('UICorner', {
@@ -403,6 +397,13 @@ function SyncUI:Create(Options)
   MakeDraggable(Object.Main)
   
   -- [ Main Functions ] --
+  if SaveKey and isfile(Name..".txt") then
+    Object.KeyBox.Text = readfile(Name..".txt")
+    Notify.New("["..Name.."]: Loaded Saved Key", 5)
+    wait(5)
+    RemoveGui()
+  end
+	
   local SavedKey = isfile(Name .. ".txt")
   oldstring = RandomString(10)
   function Login()
@@ -422,7 +423,7 @@ function SyncUI:Create(Options)
         Notify.New("[" .. Name .. "]: Correct Key", 5)
         PandaAuth:SaveKey(Name .. ".txt", Object.KeyBox.Text)
         Callback()
-        RemoveGui()
+        RemoveUI()
       else
         print("[ " .. Name .. " ]" .. " Incorrect key..")
         Notify.New("[" .. Name .. "]: Incorrect Key", 2)
