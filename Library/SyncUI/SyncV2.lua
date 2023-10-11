@@ -285,7 +285,7 @@ function SyncUI:Create(Options)
   
   -- [ GUI Functions ] --
   Object.GetKey.MouseButton1Click:Connect(function()
-    Object.Text = PandaAuth:GetLink(Service)
+    Object.KeyBox.Text = PandaAuth:GetLink(Service)
     setclipboard(PandaAuth:GetLink(Service))
   end)
   Object.Login.MouseButton1Click:Connect(function()
