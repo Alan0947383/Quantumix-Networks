@@ -9,12 +9,12 @@ local SyncUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/Zenith
 ## Creating the UI
 ```lua
 SyncUI:Create({
-  Service = "example",
-  Name = "Example HUB",
-  Discord = "dsc.gg/example",
-  Callback = function()
+  Service = "example", --- Your actual panda auth service name
+  Name = "Example HUB", --- Your hub name
+  Discord = "dsc.gg/example", --- Your discord link
+  Callback = function() --- What happen if key correct
     print('example')
   end,
-  SaveKey = true
+  SaveKey = true --- Save key or not
 })
 ```
