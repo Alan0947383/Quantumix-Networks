@@ -61,6 +61,12 @@ local SyncUI = {}
 local Options = {}
 local Object = SyncInstance.obj
 
+function SyncUI:SaveKey(name, content)
+  writefile(name, content)
+  Notify.New("Saving Key...", 2)
+  wait(2)
+  Notify.New("Key Saved!")
+end
 function SyncUI:Create(Options)
   -- [ Options ] --
   Service = Options.Service
@@ -419,7 +425,7 @@ function SyncUI:Create(Options)
       elseif PandaAuth:ValidateKey(Service, Object.KeyBox.Text) then
         print("[ " .. Name .. " ]" .. " Correct Key")
         Notify.New("[" .. Name .. "]: Correct Key", 5)
-        PandaAuth:SaveKey(Name .. ".txt", Object.KeyBox.Text)
+        SyncUI:SaveKey(Name .. ".txt", Object.KeyBox.Text)
         Callback()
         RemoveUI()
       else
