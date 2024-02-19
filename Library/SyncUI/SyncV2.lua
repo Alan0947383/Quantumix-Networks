@@ -418,7 +418,7 @@ function SyncUI:Create(Options)
         return Notify.New("Haha kid want to bypass PandaKeySystem v2", 2) 
       end
       oldstring = RandomString(10)
-      if PandaAuth:GetLink(Service) == nil or PandaAuth:ValidateKey(Service, Object.KeyBox.Text .. RandomString(10)) then
+      if PandaAuth:GetKey(Service) == nil or PandaAuth:ValidateKey(Service, Object.KeyBox.Text .. RandomString(10)) then
         Notify.New("Haha kid wants to bypass PandaKeySystem v2", 2)
         wait(2)
         while true do end
